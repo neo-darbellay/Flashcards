@@ -4,5 +4,16 @@
   "branch": "main",
   "me": "neo-darbellay",
   "journalStartDate": null,
-  "exceptions": []
+  "exceptions": [
+    {
+      "id": "3862fdc1-4325-496c-ae54-ec05745451eb",
+      "type": "commitless",
+      "name": "learn(marketplace): Introduction au nouveau système d'évaluation",
+      "description": "",
+      "date": "2026-01-21T15:00:00.000Z",
+      "duration": 5,
+      "status": "Done",
+      "author": "neo-darbellay"
+    }
+  ]
 }
