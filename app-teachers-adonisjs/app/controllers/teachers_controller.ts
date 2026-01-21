@@ -28,6 +28,7 @@ export default class TeachersController {
     // Sélectionner l'enseignant dont on veut afficher les détails
     const teacher = await Teacher.query().where('id',
       params.id).preload('section').firstOrFail()
+
     // Afficher la vue
     return view.render('pages/teachers/show.edge', {
       title: "Détail d'un enseignant", teacher
@@ -43,7 +44,23 @@ export default class TeachersController {
   */
   async update({ params, request }: HttpContext) { }
   /**
-  * Delete record
-  */
-  async destroy({ params }: HttpContext) { }
+ * Supprimer un enseignant
+ */
+  async destroy({ params, session, response }: HttpContext) {
+    // Sélectionne l'enseignant à supprimer
+    const teacher = await Teacher.findOrFail(params.id)
+
+    // Supprime l'enseignant
+    await teacher.delete()
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `L'enseignant ${teacher.lastname} ${teacher.firstname} a été supprimé avec succès !`
+    )
+
+    // Redirige l'utilisateur sur la home
+    return response.redirect().toRoute('home')
+  }
+
 }
