@@ -14,6 +14,16 @@
       "duration": 5,
       "status": "Done",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "1e12c887-704c-4ae4-a95e-f3ee1bb61fba",
+      "type": "commitless",
+      "name": "chore(aide): Aidé les autres",
+      "description": "J'ai aussi fait une brief révision de ce que j'ai appris pendant cette séance",
+      "date": "2026-01-21T15:35:00.000Z",
+      "duration": 15,
+      "status": "Done",
+      "author": "neo-darbellay"
     }
   ]
 }
