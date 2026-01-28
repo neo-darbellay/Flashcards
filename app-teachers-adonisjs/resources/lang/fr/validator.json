@@ -6,7 +6,8 @@
       "lastname": "Nom",
       "nickname": "Surnom",
       "origine": "Origine",
-      "sectionId": "Section"
+      "sectionId": "Section",
+      "name": "Nom"
     },
     "messages": {
       "required": "Le champ {field} est obligatoire.",

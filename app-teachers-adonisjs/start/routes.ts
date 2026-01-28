@@ -30,6 +30,10 @@ router.get('/teacher/:id/edit', [TeachersController, 'edit']).as('teacher.edit')
 // Route permettant la modification de l'enseignant
 router.put('/teacher/:id/update', [TeachersController, 'update']).as('teacher.update')
 
+
+
+/* SECTIONS */
+
 // Route permettant de voir les sections
 router.get('/sections', [SectionsController, 'index']).as('sections.home')
 
@@ -39,5 +43,5 @@ router.delete('/sections/:id/destroy', [SectionsController, 'destroy']).as('sect
 // Route permettant d'afficher le formulaire permettant l'ajout d'une section
 router.get('/sections/add', [SectionsController, 'create']).as('sections.create')
 
-// Route permettant l'ajout de l'enseignant
+// Route permettant l'ajout d'une section
 router.post('/sections/add', [SectionsController, 'store']).as('sections.store')
