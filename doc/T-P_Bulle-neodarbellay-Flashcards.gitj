@@ -70,7 +70,7 @@
       "type": "commitless",
       "name": "learn(module): Explications de certains termes",
       "description": "L'enseignant nous a expliqué certain termes techniques que la plupart ne comprenaient pas",
-      "date": "2026-01-28T14:20:00.000Z",
+      "date": "2026-01-28T15:20",
       "duration": 40,
       "status": "Done",
       "author": "neo-darbellay"
@@ -87,6 +87,16 @@
       "status": "Done",
       "author": "neo-darbellay",
       "patch": true
+    },
+    {
+      "id": "75748a5f-092e-4652-ae71-0272690de8c3",
+      "type": "commitless",
+      "name": "chore(Test formatif): Passage du test formatif",
+      "description": "Ceci c'est passé sous une autre branche, donc n'est pas présent dans le gitjournal.",
+      "date": "2026-01-28T13:50",
+      "duration": 50,
+      "status": "Done",
+      "author": "neo-darbellay"
     }
   ]
 }
