@@ -18,10 +18,40 @@
     {
       "id": "1e12c887-704c-4ae4-a95e-f3ee1bb61fba",
       "type": "commitless",
-      "name": "chore(aide): Aidé les autres",
+      "name": "chore(aide): Aider les autres",
       "description": "J'ai aussi fait une brief révision de ce que j'ai appris pendant cette séance",
-      "date": "2026-01-21T15:35:00.000Z",
+      "date": "2026-01-21T16:35",
       "duration": 15,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "335dd8dd-e569-44d1-ab5b-8efd4f9957cf",
+      "type": "commitless",
+      "name": "chore(cours): explication du déroulement d'aujourd'hui",
+      "description": "",
+      "date": "2026-01-28T11:20:00.000Z",
+      "duration": 10,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "f5947f68-f7a4-4fc2-be5c-6b7e70149ad8",
+      "type": "commitless",
+      "name": "chore(aide): Aider Jonathan",
+      "description": "Nous avons complété l'étape 6, 7, 8 et 9",
+      "date": "2026-01-28T11:30:00.000Z",
+      "duration": 60,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "2ba134cc-d704-413d-a83f-97656b1efcf1",
+      "type": "commitless",
+      "name": "doc(résumé Adonis): Création d'un résumé sur Adonis",
+      "description": "Il n'est pas fini, mais moi et Jonathan avons travaillé sur un résumé sur son repo.",
+      "date": "2026-01-28T12:30:00.000Z",
+      "duration": 25,
       "status": "Done",
       "author": "neo-darbellay"
     }
