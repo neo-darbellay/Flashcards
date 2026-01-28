@@ -64,6 +64,29 @@
       "duration": 20,
       "status": "Done",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "bd6bab88-ef42-45b5-814f-d9cf258e56da",
+      "type": "commitless",
+      "name": "learn(module): Explications de certains termes",
+      "description": "L'enseignant nous a expliqué certain termes techniques que la plupart ne comprenaient pas",
+      "date": "2026-01-28T14:20:00.000Z",
+      "duration": 40,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "ebb03841-eb12-4d1f-950b-c36e530b06ce",
+      "type": "commitpatch",
+      "sha": "847df504416d45c3aee903fe0279b82b9c3fd266",
+      "url": "https://github.com/neo-darbellay/Flashcards/commit/847df504416d45c3aee903fe0279b82b9c3fd266",
+      "name": "feat(step 2): Fini l'étape 2",
+      "description": "",
+      "date": "2026-01-21T12:30:00.000Z",
+      "duration": 20,
+      "status": "Done",
+      "author": "neo-darbellay",
+      "patch": true
     }
   ]
 }
