@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>
+        Version statique de l'application des surnoms
+    </title>
+</head>
+
+<body>
+    @component('components/layout', { title: 'Accueil' })
+    <h3>
+        Liste des sections
+    </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    Options
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @each ((section, index) in sections)
+            <tr>
+                <td>
+                    {{ section.name }}
+                </td>
+                <td class="containerOptions">
+                    {{-- Ajout d'un formulaire pour la suppression d'une section --}}
+                    <form action="{{ route('sections.destroy', { id: section.id }) }}?_method=DELETE" method="POST"
+                        style="display: inline">
+                        {{ csrfField() }}
+                        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                            <img height="20em" src="/img/delete.png" alt="delete" />
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            @end
+        </tbody>
+    </table>
+    @endcomponent
+</body>
+
+</html>
