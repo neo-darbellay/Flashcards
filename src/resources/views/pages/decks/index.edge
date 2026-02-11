@@ -1,0 +1,13 @@
+@component('components/layout', { title: 'Decks' })
+
+<h1>Liste des decks</h1>
+@each(deck in decks)
+<a href="/decks/{{ deck.id }}" class="card-link">
+    <div class="card">
+        <h3>{{ deck.titre }}</h3>
+        <p>{{ deck.description }}</p>
+    </div>
+</a>
+@endeach
+
+@endcomponent
