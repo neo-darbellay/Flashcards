@@ -4,8 +4,27 @@
             <h1>Flashcards</h1>
         </div>
     </div>
-    <nav>
-        <a href="{{ route('home') }}">Accueil</a>&nbsp;
-        <a href="{{ route('decks') }}">Les decks</a>&nbsp;
-    </nav>
+    <div class="buttons">
+        <nav>
+            {{-- J'utilise request.url() pour pouvoir activer/désactiver le lien --}}
+            {{-- Par contre, vu que home = "/", actif est toujours là --}}
+            <a href="{{ route('home') }}" class="{{ request.url() == route('home') ? 'active' : '' }}">
+                Accueil
+            </a>
+            <a href="{{ route('decks') }}" class="{{ request.url() == route('decks') ? 'active' : '' }}">
+                Les decks
+            </a>
+        </nav>
+        <div class="login-container">
+            <form action="#" method="post">
+                <label for="user"></label>
+                <input type="text" name="user" id="user" placeholder="Login" />
+                <label for="password"></label>
+                <input type="password" name="password" id="password" placeholder="Mot de passe" />
+                <button type="submit" class="btn btn-login">
+                    Se connecter
+                </button>
+            </form>
+        </div>
+    </div>
 </header>

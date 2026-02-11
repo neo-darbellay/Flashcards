@@ -11,9 +11,27 @@
 <body>
   @component('components/layout')
   <h2>Bienvenue</h2>
-  <p>Bienvenue sur Flashcards, une application créé par un étudiant, pour d'autre étudiants</p>
+  <p>Bienvenue sur Flashcards, une application créé par un étudiant, pour d'autre étudiants.</p>
 
-  <h2>Qu'est-ce ?</h2>
+  <h2>Le but de cet application</h2>
+  <p>
+    Flashcards est une application de cartes de révision personnalisées conçue pour aider les étudiants à mémoriser des
+    sujets tels que les mathématiques.
+  </p>
+  <p>
+    Une flashcard est une carte d'apprentissage qui contient une question d'un côté
+    et la réponse de l'autre.
+  </p>
+  <p>
+    L'utilisateur regarde la question, répond à voix haute, puis clique sur la carte pour
+    révéler la réponse.
+  </p>
+
+  <h2>Comment utiliser l'application</h2>
+  <p>
+    Pour utiliser l'application, il suffit d'aller sur <a href={{ route('decks') }}>cette page</a>, puis de prendre un
+    deck de cartes existant pour réviser, de créer son propre deck ou de retirer un deck existant.
+  </p>
 
   @endcomponent
 </body>
