@@ -23,6 +23,13 @@ p {
   margin-bottom: 15px;
 }
 
+button {
+  border: none;
+  background-color: #4CAF50;
+
+  border-radius: 8px;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -69,14 +76,13 @@ footer {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 10px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
 footer p {
-  margin: 0;
+  margin: 10px 0;
 }
 
 .card-link {
@@ -94,7 +100,7 @@ footer p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h3 {
+.card * {
   margin: 40px;
 }
 
