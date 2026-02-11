@@ -6,12 +6,16 @@ Dans ce projet, nous mettons en pratique nos connaissances d'AdonisJS en appliqu
 Nous avons le droit d'utiliser des outils d'intelligence artificielle, à condition d'être capable d'expliquer ce que l'on a utilisé et ce que cela fait (par exemple, un morceau de code).
 
 
+
 > <span style="color:red;">TODO</span>
 >
 > Expliquer dans ses propres mots les objectifs pédagogiques
 
 ## Installation et démarrage de l'application
 > Remarque : cette application a besoin d'un serveur MySQL pour fonctionner.
+
+> ### Prérequis:
+> * Un serveur mySQL qui tourne, avec une base de donnée vide nommée "db_flashcards"
 
 Pour installer l'application **Flashcards**, il faut tout d'abord avoir `Node.js` et `npm` installés et à jour.
 
