@@ -1,13 +1,25 @@
 @component('components/layout', { title: 'Decks' })
 
-<h1>Liste des decks</h1>
-@each(deck in decks)
-<a href="/decks/{{ deck.id }}/show" class="card-link">
-    <div class="card">
-        <h3>{{ deck.titre }}</h3>
-        <p>{{ deck.description }}</p>
-    </div>
-</a>
-@endeach
+<h1>Mes decks</h1>
+<table style="width:100%; border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Nombre de cartes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each(deck in decks)
+        <tr>
+            <td><a href="/decks/{{ deck.id }}/show">{{ deck.titre }}</a></td>
+            <td>{{ deck.description }}</td>
+            <td>{{ tab_counts[deck.id] != null ? tab_counts[deck.id] : 0 }}</td>
+        </tr>
+        @endeach
+    </tbody>
+</table>
+
+<button>Ajouter</button>
 
 @endcomponent

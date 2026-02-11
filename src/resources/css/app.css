@@ -29,7 +29,6 @@ p:has(+h2) {
 
 button {
   border: none;
-  background-color: #4CAF50;
 
   border-radius: 8px;
 }
@@ -66,6 +65,16 @@ header {
 
   background-color: #333;
   padding: 10px 0;
+}
+
+th {
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  padding: 8px;
 }
 
 nav {

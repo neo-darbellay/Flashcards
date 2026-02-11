@@ -8,7 +8,20 @@ export default class DecksController {
    */
   async index({ view }: HttpContext) {
     const decks = await Deck.all()
-    return view.render('pages/decks/index', { decks })
+    const cards = await Card.query()
+
+    // Créer un dictionnaire qui contient le nombre de cartes par deck
+    const tab_counts: Record<number, number> = {}
+
+    for (const card of cards) {
+      if (tab_counts[card.deck_fk] == null) {
+        tab_counts[card.deck_fk] = 1;
+      } else {
+        tab_counts[card.deck_fk]++;
+      }
+    }
+
+    return view.render('pages/decks/index', { decks, tab_counts })
   }
 
   /**

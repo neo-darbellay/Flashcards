@@ -7,12 +7,11 @@
     <div class="buttons">
         <nav>
             {{-- J'utilise request.url() pour pouvoir activer/désactiver le lien --}}
-            {{-- Par contre, vu que home = "/", actif est toujours là --}}
             <a href="{{ route('home') }}" class="{{ request.url() == route('home') ? 'active' : '' }}">
                 Accueil
             </a>
             <a href="{{ route('decks') }}" class="{{ request.url() == route('decks') ? 'active' : '' }}">
-                Les decks
+                Mes decks
             </a>
         </nav>
         <div class="login-container">
