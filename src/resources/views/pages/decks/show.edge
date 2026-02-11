@@ -1,0 +1,19 @@
+@component('components/layout', { title: 'Decks' })
+<h1>{{ deck.titre }}</h1>
+<p>{{ deck.description }}</p>
+
+<h2>Cartes</h2>
+@each(card in cards)
+<button class="card-link" onclick="toggleAnswer({{ card.id }})">
+    <div class="card">
+        <h3>{{ card.question }}</h3>
+        <p>{{ card.reponse }}</p>
+    </div>
+</button>
+@endeach
+
+@if(cards.length===0)
+<p>Aucune carte dans ce deck.</p>
+@endif
+
+@endcomponent

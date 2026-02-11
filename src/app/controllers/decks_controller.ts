@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Deck from '#models/deck'
+import Card from '#models/card'
 
 export default class DecksController {
   /**
@@ -23,7 +24,23 @@ export default class DecksController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) { }
+  async show({ params, view }: HttpContext) {
+    const deck = await Deck.query().where('id', params.id).firstOrFail()
+
+    const cards = await Card.query().where('deck_fk', deck.id)
+
+    // Rendre aléatoire l'ordre des cartes
+    let currentIndex = cards.length;
+
+    while (currentIndex != 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
+    }
+
+    return view.render('pages/decks/show', { deck, cards })
+  }
 
   /**
    * Edit individual record
