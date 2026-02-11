@@ -97,6 +97,26 @@
       "duration": 50,
       "status": "Done",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "6b4bb1b8-cb8d-4c5f-8e91-accdfde3e018",
+      "type": "commitless",
+      "name": "Absence",
+      "description": "J'étais à l'hopital",
+      "date": "2026-02-04T11:20:00.000Z",
+      "duration": 225,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "a3c18da3-4a9e-4b95-86e3-b59966efd337",
+      "type": "commitless",
+      "name": "doc(Flashcards): Relecture du CDC",
+      "description": "",
+      "date": "2026-02-11T11:20:00.000Z",
+      "duration": 15,
+      "status": "Done",
+      "author": "neo-darbellay"
     }
   ]
 }
