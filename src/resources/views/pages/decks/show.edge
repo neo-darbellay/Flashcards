@@ -1,24 +1,25 @@
 @component('components/layout', { title: 'Decks' })
-<h1>{{ deck.titre }}</h1>
-<p>{{ deck.description }}</p>
 
-<h2>Cartes</h2>
-@each(card in cards)
-@component('components/card', {
-card: card
-})
-@end
-@endeach
+<h1>Mes decks</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Nombre de cartes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @each(deck in decks)
+        <tr>
+            <td><a href={{ route('decks.show', { id: deck.id }) }}>{{ deck.titre }}</a></td>
+            <td>{{ deck.description }}</td>
+            <td>{{ deck.cards.length ?? 0 }}</td>
+        </tr>
+        @endeach
+    </tbody>
+</table>
 
-@if(cards.length===0)
-<p>Aucune carte dans ce deck.</p>
-@endif
-
-<script>
-    function toggleFlip(button) {
-    const card = button.querySelector(".card");
-    card.classList.toggle("flipped");
-  }
-</script>
+<a class="addButton" href={{ route('decks.create') }}>Ajouter</a>
 
 @endcomponent

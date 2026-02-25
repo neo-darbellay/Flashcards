@@ -9,7 +9,7 @@ export default class extends BaseSchema {
 
       table.string('question').notNullable().unique()
       table.string('reponse').notNullable()
-      table.integer('deck_fk').unsigned().references('id').inTable('decks').onDelete('CASCADE')
+      table.integer('deck_id').unsigned().references('id').inTable('decks').onDelete('CASCADE')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

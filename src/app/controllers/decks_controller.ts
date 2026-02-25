@@ -1,58 +1,59 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import { deckValidator } from '#validators/deck'
 import Deck from '#models/deck'
-import Card from '#models/card'
 
 export default class DecksController {
   /**
    * Display a list of resource
    */
+
   async index({ view }: HttpContext) {
-    const decks = await Deck.all()
-    const cards = await Card.query()
+    const decks = await Deck.query().preload('cards')
 
-    // Créer un dictionnaire qui contient le nombre de cartes par deck
-    const tab_counts: Record<number, number> = {}
-
-    for (const card of cards) {
-      if (tab_counts[card.deck_fk] == null) {
-        tab_counts[card.deck_fk] = 1;
-      } else {
-        tab_counts[card.deck_fk]++;
-      }
-    }
-
-    return view.render('pages/decks/index', { decks, tab_counts })
+    return view.render('pages/decks/show', { decks })
   }
+
 
   /**
    * Display form to create a new record
    */
-  async create({ }: HttpContext) { }
+  async create({ view }: HttpContext) {
+    return view.render('pages/decks/create')
+  }
 
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) { }
+  async store({ request, response }: HttpContext) {
+    // Validation des données saisies par l'utilisateur
+    const { titre, description } = await request.validateUsing(deckValidator)
+
+    // Création du nouveau deck
+    await Deck.create({
+      titre, description
+    })
+
+    // Rediriger vers la homepage
+    return response.redirect().toRoute('decks')
+  }
 
   /**
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
-    const deck = await Deck.query().where('id', params.id).firstOrFail()
-
-    const cards = await Card.query().where('deck_fk', deck.id)
+    const deck = (await Deck.query().where('id', params.id).preload('cards').firstOrFail())
 
     // Rendre aléatoire l'ordre des cartes
-    let currentIndex = cards.length;
+    let currentIndex = deck.cards.length;
 
     while (currentIndex != 0) {
-      let randomIndex = Math.floor(Math.random() * currentIndex);
+      const randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
 
-      [cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
+      [deck.cards[currentIndex], deck.cards[randomIndex]] = [deck.cards[randomIndex], deck.cards[currentIndex]];
     }
 
-    return view.render('pages/decks/show', { deck, cards })
+    return view.render('pages/decks/individual', { deck })
   }
 
   /**

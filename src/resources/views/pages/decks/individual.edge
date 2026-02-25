@@ -1,0 +1,24 @@
+@component('components/layout', { title: 'Decks' })
+<h1>{{ deck.titre }}</h1>
+<p>{{ deck.description }}</p>
+
+<h2>Cartes</h2>
+@each(card in deck.cards)
+@component('components/card', {
+card: card
+})
+@end
+@endeach
+
+@if(deck.cards.length===0)
+<p>Aucune carte dans ce deck.</p>
+@endif
+
+<script>
+  function toggleFlip(button) {
+    const card = button.querySelector(".card");
+    card.classList.toggle("flipped");
+  }
+</script>
+
+@endcomponent

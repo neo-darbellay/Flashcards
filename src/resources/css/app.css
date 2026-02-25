@@ -67,6 +67,24 @@ header {
   padding: 10px 0;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table a {
+  color: #333
+}
+
+table a:hover {
+  font-style: italic;
+}
+
+th+th,
+td+td {
+  border-left: 1px solid #ccc;
+}
+
 th {
   border-bottom: 1px solid #ccc;
   text-align: left;
@@ -227,4 +245,73 @@ footer p {
 
 .card:hover {
   transform: scale(1.03);
+}
+
+.addButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.addButton:hover {
+  background-color: #3c8a40;
+}
+
+.addForm {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.field input,
+.field textarea {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.text-danger {
+  color: #d9534f;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }

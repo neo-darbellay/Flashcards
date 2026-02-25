@@ -1,0 +1,13 @@
+{
+  "shared": {
+    "fields": {
+      "titre": "titre",
+      "description": "description"
+    },
+    "messages": {
+      "required": "Le champ {field} est obligatoire.",
+      "minLength": "Le champ {field} doit contenir au moins { min } caractères.",
+      "unique": "Le champ {field} existe déjà. Veuillez réessayer. (Ceci n'apparait pas"
+    }
+  }
+}

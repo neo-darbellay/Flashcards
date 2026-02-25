@@ -127,6 +127,16 @@
       "duration": 30,
       "status": "Done",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "7c54cbd4-cca1-48ca-b259-dd1c71fc9cf3",
+      "type": "commitless",
+      "name": "chore(Release): Mis en ligne de la première release",
+      "description": "https://github.com/neo-darbellay/Flashcards/releases/tag/Release-1",
+      "date": "2026-02-25T12:32:00.000Z",
+      "duration": 4,
+      "status": "Done",
+      "author": "neo-darbellay"
     }
   ]
 }
