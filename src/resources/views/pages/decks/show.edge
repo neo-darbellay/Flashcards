@@ -4,16 +4,21 @@
 
 <h2>Cartes</h2>
 @each(card in cards)
-<button class="card-link" onclick="toggleAnswer({{ card.id }})">
-    <div class="card">
-        <h3>{{ card.question }}</h3>
-        <p>{{ card.reponse }}</p>
-    </div>
-</button>
+@component('components/card', {
+card: card
+})
+@end
 @endeach
 
 @if(cards.length===0)
 <p>Aucune carte dans ce deck.</p>
 @endif
+
+<script>
+    function toggleFlip(button) {
+    const card = button.querySelector(".card");
+    card.classList.toggle("flipped");
+  }
+</script>
 
 @endcomponent

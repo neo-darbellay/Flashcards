@@ -122,8 +122,8 @@
       "id": "971bbeb0-6a07-4e29-be8b-ed82d7ca219f",
       "type": "commitless",
       "name": "Scrum Meeting",
-      "description": "--CE QUE J'AI FAIT\r\nVoir les commits précédents\r\n\r\n--CE QUE JE VAIS FAIRE\r\nModifier le code pour convenir à l'analyse fonctionnelle\r\n\r\n--PROBLÈME(S) BLOQUANT\r\nJe n'avais pas remarqué qu'il y avait un fichier d'analyse fonctionnelle de l'application, donc ai codé l'application d'une autre façon, et doit donc tout modifier pour que cela convient à l'analyse fonctionnelle",
-      "date": "2026-02-25T11:30:00.000Z",
+      "description": "--CE QUE J'AI FAIT\r\nVoir les commits précédents\r\n\r\n--CE QUE JE VAIS FAIRE\r\nFaire que les cartes aient un recto/verso\r\nModifier le code pour convenir à l'analyse fonctionnelle\r\n\r\n--PROBLÈME(S) BLOQUANT\r\nJe n'avais pas remarqué qu'il y avait un fichier d'analyse fonctionnelle de l'application, donc ai codé l'application d'une autre façon, et doit donc tout modifier pour que cela convient à l'analyse fonctionnelle",
+      "date": "2026-02-25T12:30",
       "duration": 30,
       "status": "Done",
       "author": "neo-darbellay"
