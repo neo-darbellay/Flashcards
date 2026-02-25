@@ -43,16 +43,6 @@ export default class DecksController {
   async show({ params, view }: HttpContext) {
     const deck = (await Deck.query().where('id', params.id).preload('cards').firstOrFail())
 
-    // Rendre aléatoire l'ordre des cartes
-    let currentIndex = deck.cards.length;
-
-    while (currentIndex != 0) {
-      const randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      [deck.cards[currentIndex], deck.cards[randomIndex]] = [deck.cards[randomIndex], deck.cards[currentIndex]];
-    }
-
     return view.render('pages/decks/individual', { deck })
   }
 
@@ -69,5 +59,15 @@ export default class DecksController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) { }
+  async destroy({ params, response }: HttpContext) {
+    // Sélectionne le deck à supprimer
+    // Erreur: ne marche pas
+    const deck = await Deck.findOrFail(params.id)
+
+    // Supprime le deck
+    await deck.delete()
+
+    // Redirige l'utilsiateur
+    return response.redirect().toRoute('deck')
+  }
 }

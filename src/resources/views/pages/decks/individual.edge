@@ -1,24 +1,99 @@
 @component('components/layout', { title: 'Decks' })
-<h1>{{ deck.titre }}</h1>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <h1>Deck: {{ deck.titre }}</h1>
+
+  <div style="display: flex; gap: 1rem;">
+    <a class="addButton" href="{{ route('decks.update') }}">Modifier le deck</a>
+    <button class="addButton" type="button" onclick="showConfirm()">Supprimer le deck</button>
+    <a class="addButton" href="{{ route('decks.show', {id: deck.id}) }}">Exercer</a>
+  </div>
+</div>
+
 <p>{{ deck.description }}</p>
 
-<h2>Cartes</h2>
-@each(card in deck.cards)
-@component('components/card', {
-card: card
-})
-@end
-@endeach
-
-@if(deck.cards.length===0)
+@if(deck.cards.length > 0)
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Réponse</th>
+    </tr>
+  </thead>
+  <tbody>
+    @each(card in deck.cards)
+    <tr>
+      <td>{{ card.question }}</td>
+      <td>{{ card.reponse }}</td>
+    </tr>
+    @endeach
+  </tbody>
+</table>
+@else
 <p>Aucune carte dans ce deck.</p>
 @endif
 
+<a class="addButton" href="{{ route('decks.show', {id: deck.id}) }}">Ajouter une carte</a>
+
+<div id="confirm-overlay" class="hidden">
+  <div class="confirm-box">
+    <h2>Êtes-vous sûr de vouloir supprimer ce deck ?</h2>
+    <form action="{{ route('decks.destroy', {id: deck.id}) }}?_method=DELETE" method="POST">
+      {{ csrfField() }}
+      <div class="confirm-buttons">
+        <button type="button" class="addButton" onclick="hideConfirm()">Annuler</button>
+        <button type="submit" class="addButton red">Ok</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  #confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  #confirm-overlay.hidden {
+    display: none !important;
+  }
+
+  .confirm-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .confirm-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  .addButton.red {
+    background-color: #dc2626;
+    /* red */
+    color: white;
+  }
+</style>
+
 <script>
-  function toggleFlip(button) {
-    const card = button.querySelector(".card");
-    card.classList.toggle("flipped");
+  function showConfirm() {
+    document.getElementById('confirm-overlay').classList.remove('hidden');
+  }
+
+  function hideConfirm() {
+    document.getElementById('confirm-overlay').classList.add('hidden');
   }
 </script>
-
 @endcomponent
