@@ -1,0 +1,38 @@
+@component('components/layout', { title: 'Cartes' })
+
+<h1 style="text-align: center">Nouvelle carte pour le deck "{{ deck.titre }}"</h1>
+
+<form class="addForm" action="{{ route('cards.store', { id: deck.id }) }}" method="POST">
+    {{ csrfField() }}
+
+    {{-- Question --}}
+    <div class="field">
+        <label for="question">Question</label>
+        <textarea id="question" name="question">{{ old('question') || '' }}</textarea>
+
+        @inputError('question')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    {{-- Réponse --}}
+    <div class="field">
+        <label for="reponse">Réponse</label>
+        <textarea id="reponse" name="reponse">{{ old('reponse') || '' }}</textarea>
+
+        @inputError('reponse')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    <div style="display: flex; gap: 2rem; margin-top: 1.5rem;">
+        <button class="addButton" type="submit">Ajouter</button>
+        <a class="addButton red" href={{ route('decks.show', { id: deck.id }) }}>Abandonner</a>
+    </div>
+</form>
+
+@endcomponent
