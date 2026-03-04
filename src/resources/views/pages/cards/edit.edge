@@ -1,0 +1,39 @@
+@component('components/layout', { title: 'Cartes' })
+
+<h1 style="text-align: center">Modifier une carte du deck "{{ deck.titre }}"</h1>
+
+<form class="addForm" action="{{ route('cards.update', { deckId: deck.id, cardId: card.id }) }}?_method=PUT"
+    method="POST">
+    {{ csrfField() }}
+
+    {{-- Question --}}
+    <div class="field">
+        <label for="question">Question</label>
+        <textarea id="question" name="question">{{ old('question') || card.question }}</textarea>
+
+        @inputError('question')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    {{-- Réponse --}}
+    <div class="field">
+        <label for="reponse">Réponse</label>
+        <textarea id="reponse" name="reponse">{{ old('reponse') || card.reponse }}</textarea>
+
+        @inputError('reponse')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    <div style="display: flex; gap: 2rem; margin-top: 1.5rem;">
+        <button class="addButton" type="submit">Modifier</button>
+        <a class="addButton red" href={{ route('decks.show', { id: deck.id }) }}>Abandonner</a>
+    </div>
+</form>
+
+@endcomponent

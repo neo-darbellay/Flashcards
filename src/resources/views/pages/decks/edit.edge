@@ -1,7 +1,6 @@
 @component('components/layout', { title: 'Modifier un deck' })
 <h1 style="text-align: center">Modifier le deck "{{deck.titre}}"</h1>
 
-{{-- Notez l'ID dans la route et le spoofing de méthode PUT --}}
 <form action="{{ route('decks.update', { id: deck.id }) }}?_method=PUT" method="POST">
     {{ csrfField() }}
 

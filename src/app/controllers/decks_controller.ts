@@ -67,7 +67,7 @@ export default class DecksController {
     // Sélectionner le deck dont on veut mettre à jour des informations
     const deck = await Deck.findOrFail(params.id)
 
-    // Met à jour les infos de l'enseignant
+    // Met à jour les infos du deck
     deck.merge({
       titre,
       description,

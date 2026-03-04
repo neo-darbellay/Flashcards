@@ -27,3 +27,5 @@ router.get('/decks/:id/cards/create', [CardsController, 'create']).as('cards.cre
 router.post('/decks/:id/cards/create', [CardsController, 'store']).as('cards.store')
 router.get('/decks/:deckId/cards/:cardId/show', [CardsController, 'show']).as('cards.show')
 router.post('/decks/:deckId/cards/:cardId/destroy', [CardsController, 'destroy']).as('cards.destroy')
+router.get('/decks/:deckId/cards/:cardId/edit', [CardsController, 'edit']).as('cards.edit')
+router.post('/decks/:deckId/cards/:cardId/update', [CardsController, 'update']).as('cards.update')

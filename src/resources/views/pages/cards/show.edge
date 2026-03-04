@@ -7,7 +7,7 @@
 
 <div style="display: flex; justify-content:space-between; width: 50%">
     <a class="addButton" href={{ route('decks.show', { id: deck.id }) }}>Ok</a>
-    <a class="addButton" href={{ route('decks.show', { id: deck.id }) }}>Modifier</a>
+    <a class="addButton" href={{ route('cards.edit', { deckId: deck.id, cardId: card.id }) }}>Modifier</a>
     <button class="addButton red" onclick="showConfirm()">Supprimer</button>
 </div>
 

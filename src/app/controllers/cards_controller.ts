@@ -42,6 +42,7 @@ export default class CardsController {
    * Show individual record
    */
   async show({ params, view }: HttpContext) {
+    // Sélectionner la carte (et le deck qui va avec) dont on veut afficher
     const deck = await Deck.findOrFail(params.deckId)
     const card = await Card.findOrFail(params.cardId)
 
@@ -51,13 +52,47 @@ export default class CardsController {
   /**
    * Edit individual record
    */
-  async edit({ params }: HttpContext) { }
+  async edit({ params, view }: HttpContext) {
+    // Sélectionner la carte (et le deck qui va avec) dont on veut mettre à jour des informations
+    const deck = await Deck.findOrFail(params.deckId)
+    const card = await Card.findOrFail(params.cardId)
+
+    // Afficher la vue
+    return view.render('pages/cards/edit', { card, deck })
+  }
 
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request }: HttpContext) { }
+  async update({ params, request, session, response }: HttpContext) {
+    const requete = {
+      ...request.all(),
+      deckId: params.deckId
+    }
 
+    // Validation des données saisies par l'utilisateur
+    const { question, reponse } = await request.validateUsing(cardValidator, { data: requete })
+
+    // Sélectionner la carte dont on veut mettre à jour des informations
+    const card = await Card.findOrFail(params.cardId)
+
+    // Met à jour les infos de la carte
+    card.merge({
+      question,
+      reponse
+    })
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `La carte a été modifié avec succès !`
+    )
+
+    await card.save()
+
+    // Redirige l'utilisateur sur le bon deck
+    return response.redirect().toRoute('decks.show', { id: params.deckId })
+  }
   /**
    * Delete record
    */
