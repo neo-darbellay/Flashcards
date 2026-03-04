@@ -35,13 +35,18 @@ export default class CardsController {
       question, reponse, deckId: deck.id
     })
 
-    // Rediriger vers la homepage
+    // Rediriger vers le bon deck
     return response.redirect().toRoute('decks.show', { id: deck.id })
   }
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) { }
+  async show({ params, view }: HttpContext) {
+    const deck = await Deck.findOrFail(params.deckId)
+    const card = await Card.findOrFail(params.cardId)
+
+    return view.render('pages/cards/show', { deck, card })
+  }
 
   /**
    * Edit individual record
@@ -56,5 +61,14 @@ export default class CardsController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) { }
+  async destroy({ params, response }: HttpContext) {
+    // Sélectionne la carte à supprimer
+    const card = await Card.findOrFail(params.cardId)
+
+    // Supprime la carte
+    await card.delete()
+
+    // Redirige l'utilsiateur
+    return response.redirect().toRoute('decks.show', { id: params.deckId })
+  }
 }

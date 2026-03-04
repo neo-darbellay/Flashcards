@@ -189,6 +189,12 @@ footer p {
   margin: 10px;
 }
 
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+}
+
 .card-link {
   text-decoration: none;
   color: inherit;
@@ -230,6 +236,7 @@ footer p {
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
 
   background: #fff;
   border-radius: 12px;

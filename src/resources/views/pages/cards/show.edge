@@ -1,0 +1,70 @@
+@component('components/layout', { title: 'Carte individuel' })
+
+<div class="card-wrapper">
+    @component('components/card', { card: card})
+    @endcomponent
+</div>
+
+<div style="display: flex; justify-content:space-between; width: 50%">
+    <a class="addButton" href={{ route('decks.show', { id: deck.id }) }}>Ok</a>
+    <a class="addButton" href={{ route('decks.show', { id: deck.id }) }}>Modifier</a>
+    <button class="addButton red" onclick="showConfirm()">Supprimer</button>
+</div>
+
+<div id="confirm-overlay" class="hidden">
+    <div class="confirm-box">
+        <h2>Êtes-vous sûr de vouloir supprimer cette carte ?</h2>
+        <form action="{{ route('cards.destroy', {deckId: deck.id, cardId: card.id}) }}?_method=DELETE" method="POST">
+            {{ csrfField() }}
+            <div class="confirm-buttons">
+                <button type="button" class="addButton" onclick="hideConfirm()">Annuler</button>
+                <button type="submit" class="addButton red">Ok</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    #confirm-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    #confirm-overlay.hidden {
+        display: none !important;
+    }
+
+    .confirm-box {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .confirm-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+</style>
+
+<script>
+    function showConfirm() {
+    document.getElementById('confirm-overlay').classList.remove('hidden');
+  }
+
+  function hideConfirm() {
+    document.getElementById('confirm-overlay').classList.add('hidden');
+  }
+</script>
+@endcomponent

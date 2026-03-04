@@ -25,7 +25,7 @@
   <tbody>
     @each(card in deck.cards)
     <tr>
-      <td>{{ card.question }}</td>
+      <td><a href={{ route('cards.show', { deckId: deck.id, cardId: card.id }) }}>{{ card.question }}</a></td>
       <td>{{ card.reponse }}</td>
     </tr>
     @endeach
