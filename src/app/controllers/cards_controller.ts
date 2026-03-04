@@ -20,7 +20,7 @@ export default class CardsController {
   /**
    * Handle form submission for the create action
    */
-  async store({ params, request, response }: HttpContext) {
+  async store({ params, request, session, response }: HttpContext) {
     const requete = {
       ...request.all(),
       deckId: params.id
@@ -34,6 +34,12 @@ export default class CardsController {
     await Card.create({
       question, reponse, deckId: deck.id
     })
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `La carte a été créée avec succès !`
+    )
 
     // Rediriger vers le bon deck
     return response.redirect().toRoute('decks.show', { id: deck.id })
@@ -96,12 +102,18 @@ export default class CardsController {
   /**
    * Delete record
    */
-  async destroy({ params, response }: HttpContext) {
+  async destroy({ params, session, response }: HttpContext) {
     // Sélectionne la carte à supprimer
     const card = await Card.findOrFail(params.cardId)
 
     // Supprime la carte
     await card.delete()
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `La carte a été retirée avec succès !`
+    )
 
     // Redirige l'utilsiateur
     return response.redirect().toRoute('decks.show', { id: params.deckId })

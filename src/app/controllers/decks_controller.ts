@@ -24,14 +24,20 @@ export default class DecksController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response }: HttpContext) {
+  async store({ request, session, response }: HttpContext) {
     // Validation des données saisies par l'utilisateur
     const { titre, description } = await request.validateUsing(deckValidator)
 
     // Création du nouveau deck
-    await Deck.create({
+    const deck = await Deck.create({
       titre, description
     })
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `Le deck  ${deck.titre} a été créé avec succès !`
+    )
 
     // Rediriger vers la homepage
     return response.redirect().toRoute('decks')
@@ -88,12 +94,21 @@ export default class DecksController {
   /**
    * Delete record
    */
-  async destroy({ params, response }: HttpContext) {
+  async destroy({ params, session, response }: HttpContext) {
     // Sélectionne le deck à supprimer
     const deck = await Deck.findOrFail(params.id)
 
+    const titre = deck.titre
+
     // Supprime le deck
     await deck.delete()
+
+    // Afficher un message à l'utilisateur
+    session.flash(
+      'success',
+      `Le deck  ${titre} a été effacé avec succès !`
+    )
+
 
     // Redirige l'utilsiateur
     return response.redirect().toRoute('decks')
