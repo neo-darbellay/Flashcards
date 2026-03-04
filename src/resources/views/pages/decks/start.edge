@@ -1,0 +1,18 @@
+@component('components/layout', { title: 'Début d\'une partie' })
+
+<h1 style="text-align:center;">Vous avez choisi le deck <br>{{ deck.titre }}</h1>
+
+<form action="{{ route('decks.play', {id: deck.id}) }}" method="GET"
+    style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+
+    <div style="display: flex; align-items: center; gap: 2rem; margin: 10rem 0">
+        <label for="mode">Exercer en mode :</label>
+        <select name="mode" id="mode">
+            <option value="Basique" default>Basique</option>
+            <option value="Aleatoire">Aléatoire</option>
+        </select>
+    </div>
+
+    <button type="submit" class="addButton">C'est parti</button>
+</form>
+@endcomponent

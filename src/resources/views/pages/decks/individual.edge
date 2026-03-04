@@ -7,7 +7,7 @@
     <button class="addButton red" type="button" onclick="showConfirm()">Supprimer le deck</button>
     @if(deck.cards.length > 0)
 
-    <a class="addButton" href="{{ route('decks.show', {id: deck.id}) }}">Exercer</a>
+    <a class="addButton" href="{{ route('decks.start', {id: deck.id}) }}">Exercer</a>
     @endif
   </div>
 </div>

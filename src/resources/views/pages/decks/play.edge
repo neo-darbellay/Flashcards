@@ -1,0 +1,126 @@
+@component("components/layout", { title: "En pleine partie" })
+
+<div class="card-wrapper">
+    <button class="card-link" onclick="toggleFlipOnce(this)">
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>Question</h3>
+                    <p id="card-question"></p>
+                </div>
+
+                <div class="card-back">
+                    <h3>Réponse</h3>
+                    <p id="card-answer"></p>
+                </div>
+            </div>
+        </div>
+    </button>
+</div>
+
+<div id="resultButtons" style="display: none; justify-content:space-evenly">
+    <button type="submit" class="addButton" onclick="addPoint()">Juste</button>
+    <button type="submit" class="addButton red" onclick="nextCard()">Faux</button>
+</div>
+
+<div id="results" style="display: none; align-items: center; gap: 4rem; flex-direction: column">
+    <h1 style="text-align: center">Vous avez exercé le deck <br> {{ deck.titre }}</h1>
+    <p id="mode"></p>
+    <p id="result"></p>
+
+    <a class="addButton" href={{ route("decks") }}>Ok</a>
+</div>
+
+<script>
+    const cards = {{{ JSON.stringify(cards) }}}
+    const maxPoints = cards.length
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const mode = urlParams.get("mode") || "Basique";
+
+    let currentIndex = 0
+    let totalPoints = 0
+    let hasToggled = false
+
+    /**
+     * Afficher la carte à l"index actuel
+     */
+    function renderCard() {
+        document.getElementById("card-question").textContent = cards[currentIndex].question
+        document.getElementById("card-answer").textContent = cards[currentIndex].reponse
+    }
+
+    /**
+     * Permettre à la carte de tourner (seulement une fois)
+     */
+    function toggleFlipOnce(button) {
+        if (!hasToggled) {
+            hasToggled = true
+            const card = button.querySelector(".card")
+            card.classList.toggle("flipped")
+            card.classList.toggle("normalCursor")
+
+            setTimeout(() => {
+                document.getElementById("resultButtons").style.display = "flex"
+            }, 1000)
+        }
+    }
+
+    /**
+     * Afficher l"écran de fin
+     */
+    function endGame() {
+        const container = document.getElementById("results")
+        const gameMode = document.getElementById("mode")
+        const result = document.getElementById("result")
+
+        // Cache ce qui n"est plus utile
+        document.getElementById("resultButtons").style.display = "none"
+        document.querySelector(".card-wrapper").style.display = "none"
+
+        // Affiche les resultats
+        gameMode.textContent = "Mode de jeu: " + mode
+        result.textContent = "Votre résultat: " + totalPoints + "/" + maxPoints
+        container.style.display = "flex"
+    }
+
+    /**
+     * Si possible, montrer la prochaine carte
+     */
+    function nextCard() {
+        currentIndex++
+        if (currentIndex >= cards.length) {
+            endGame()
+            return
+        }
+
+        hasToggled = false
+        document.getElementById("resultButtons").style.display = "none"
+
+        const cardInner = document.querySelector(".card-inner")
+        const card = document.querySelector(".card")
+
+        // Reset le côté de la carte instantanément
+        cardInner.style.transition = "none"
+        card.classList.remove("flipped")
+        card.classList.remove("normalCursor")
+        cardInner.offsetHeight
+
+        // Réactive la transition
+        cardInner.style.transition = ""
+
+        renderCard()
+    }
+
+    /**
+     * Ajouter un point
+     */
+    function addPoint() {
+        totalPoints++
+        nextCard()
+    }
+
+// Rendu de la première carte
+renderCard()
+</script>
+@endcomponent

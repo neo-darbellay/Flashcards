@@ -29,3 +29,7 @@ router.get('/decks/:deckId/cards/:cardId/show', [CardsController, 'show']).as('c
 router.post('/decks/:deckId/cards/:cardId/destroy', [CardsController, 'destroy']).as('cards.destroy')
 router.get('/decks/:deckId/cards/:cardId/edit', [CardsController, 'edit']).as('cards.edit')
 router.post('/decks/:deckId/cards/:cardId/update', [CardsController, 'update']).as('cards.update')
+
+// Modes
+router.get('/decks/:id/start', [DecksController, 'start']).as('decks.start')
+router.get('/decks/:id/play', [DecksController, 'play']).as('decks.play')

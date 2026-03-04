@@ -192,7 +192,7 @@ footer p {
 .card-wrapper {
   display: flex;
   justify-content: center;
-  height: 60vh;
+  padding: 10rem;
 }
 
 .card-link {
@@ -250,8 +250,12 @@ footer p {
   transform: rotateY(180deg);
 }
 
-.card:hover {
+.card:not(.normalCursor):hover {
   transform: scale(1.03);
+}
+
+.normalCursor {
+  cursor: default;
 }
 
 .addButton {

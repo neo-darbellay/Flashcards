@@ -98,4 +98,48 @@ export default class DecksController {
     // Redirige l'utilsiateur
     return response.redirect().toRoute('decks')
   }
+
+  /**
+   * Display the start of a game
+   */
+  async start({ params, view }: HttpContext) {
+    const deck = (await Deck.query().where('id', params.id).preload('cards').firstOrFail())
+
+    // Lance la partie
+    return view.render('pages/decks/start', { deck })
+  }
+
+  /**
+   * Start the game
+   */
+  async play({ params, request, view }: HttpContext) {
+    const deck = await Deck.query()
+      .where('id', params.id)
+      .preload('cards')
+      .firstOrFail()
+
+    // Récupération du mode de jeu
+    const mode = request.input('mode', 'Basique')
+
+    let cards
+
+    // Si le mode de jeu est "aleatoire", rendre les cartes aléatoire
+    if (mode == 'Aleatoire')
+      cards = deck.cards.sort(() => Math.random() - 0.5)
+    else if (mode == 'Basique')
+      cards = deck.cards
+
+    return view.render('pages/decks/play', {
+      deck,
+      mode,
+      cards: cards,
+    })
+  }
+
+  /**
+   * Display the end of a game
+   */
+  async stopGame() {
+
+  }
 }
