@@ -1,0 +1,36 @@
+@component('components/layout')
+<h1 style="text-align: center">Modifier le deck "{{deck.titre}}"</h1>
+
+{{-- Notez l'ID dans la route et le spoofing de méthode PUT --}}
+<form action="{{ route('decks.update', { id: deck.id }) }}?_method=PUT" method="POST">
+    {{ csrfField() }}
+
+    {{-- Bloc Titre --}}
+    <div class="field">
+        <label for="titre">Titre</label>
+        <input type="text" id="titre" name="titre" value="{{ old('titre') || deck.titre }}" />
+        @inputError('titre')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    {{-- Bloc Description --}}
+    <div class="field">
+        <label for="description">Description</label>
+        <textarea type="text" id="description"
+            name="description">{{ old('description') || deck.description }}</textarea>
+        @inputError('description')
+        <p class="text-danger">
+            {{ $messages.join(', ') }}
+        </p>
+        @end
+    </div>
+
+    <div style="display: flex; gap: 2rem; margin-top: 1.5rem;">
+        <button class="addButton" type="submit">Modifier</button>
+        <a class="addButton red" href={{ route('decks.show', { id: deck.id}) }}>Abandonner</a>
+    </div>
+</form>
+@end

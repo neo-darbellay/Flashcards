@@ -267,6 +267,11 @@ footer p {
   background-color: #3c8a40;
 }
 
+.addButton.red {
+  background-color: #dc2626;
+  color: white;
+}
+
 .addForm {
   max-width: 600px;
   margin: 2rem auto;

@@ -3,8 +3,8 @@
   <h1>Deck: {{ deck.titre }}</h1>
 
   <div style="display: flex; gap: 1rem;">
-    <a class="addButton" href="{{ route('decks.update') }}">Modifier le deck</a>
-    <button class="addButton" type="button" onclick="showConfirm()">Supprimer le deck</button>
+    <a class="addButton" href="{{ route('decks.edit', { id: deck.id }) }}">Modifier le deck</a>
+    <button class="addButton red" type="button" onclick="showConfirm()">Supprimer le deck</button>
     @if(deck.cards.length > 0)
 
     <a class="addButton" href="{{ route('decks.show', {id: deck.id}) }}">Exercer</a>
@@ -81,12 +81,6 @@
     gap: 1rem;
     justify-content: center;
     margin-top: 1.5rem;
-  }
-
-  .addButton.red {
-    background-color: #dc2626;
-    /* red */
-    color: white;
   }
 </style>
 
