@@ -5,7 +5,10 @@
   <div style="display: flex; gap: 1rem;">
     <a class="addButton" href="{{ route('decks.update') }}">Modifier le deck</a>
     <button class="addButton" type="button" onclick="showConfirm()">Supprimer le deck</button>
+    @if(deck.cards.length > 0)
+
     <a class="addButton" href="{{ route('decks.show', {id: deck.id}) }}">Exercer</a>
+    @endif
   </div>
 </div>
 

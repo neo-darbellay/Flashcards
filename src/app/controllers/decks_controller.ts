@@ -68,6 +68,6 @@ export default class DecksController {
     await deck.delete()
 
     // Redirige l'utilsiateur
-    return response.redirect().toRoute('deck')
+    return response.redirect().toRoute('decks')
   }
 }
