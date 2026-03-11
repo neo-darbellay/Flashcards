@@ -21,11 +21,7 @@ Enfin, dans le dossier src, il faut exécuter la commande `npm run dev`.
 
 ## Bilan
 
-# A FAIRE A LA FIN
-
-> <span style="color:red;">TODO</span>
->
-> Décrire les résultats obtenus dans le projet, par rapport aux objectifs initiaux
+Tout les objectifs du projets ont été atteints et un objectif extra (mode aléatoire) a été ajouté.
 
 ## Utilisation de l'IA
 Dans le cadre de ce projet, j'ai décidé d'utiliser l'Intelligence Artificielle uniquement pour :

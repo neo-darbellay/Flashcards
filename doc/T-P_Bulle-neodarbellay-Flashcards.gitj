@@ -157,6 +157,26 @@
       "duration": 34,
       "status": "WIP",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "425619a4-6a64-4f9c-b8ea-883117350c7b",
+      "type": "commitless",
+      "name": "chore(Test): Passer le test",
+      "description": "Tout c'est bien passé, je trouve",
+      "date": "2026-03-11T13:45:00.000Z",
+      "duration": 145,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "757de2ba-3da0-420a-aad9-5008a7902d60",
+      "type": "commitless",
+      "name": "chore(GitHub Project): Rajouté les tâches aux GitHub Project",
+      "description": "Je ne l'ai pas fait jusqu'à maintenant, mais avait déjà recopié des tâches sur papier au paravant, et donc je les ai mis sur GitHub Project, avant de passer aux autres\r\nGitHub Project a eu un soucis pendant que je sauvegardais une de mes tâches, ce qui a fait que j'ai du la recréer, ce qui m'a fait perdre du temps",
+      "date": "2026-03-11T14:54:00.000Z",
+      "duration": 30,
+      "status": "Done",
+      "author": "neo-darbellay"
     }
   ]
 }
