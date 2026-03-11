@@ -1,15 +1,18 @@
 {
   "shared": {
     "fields": {
-      "titre": "titre",
-      "description": "description",
-      "question": "question",
-      "reponse": "réponse"
+      "titre": "Titre",
+      "description": "Description",
+      "question": "Question",
+      "reponse": "Réponse"
     },
     "messages": {
-      "required": "Le champ {field} est obligatoire.",
-      "minLength": "Le champ {field} doit contenir au moins {min} caractères.",
-      "unique": "Le champ {field} existe déjà. Veuillez réessayer."
+      "required": "Veuillez entrer une valeur",
+      "minLength": "{field} trop court(e) (<{min} caractères)",
+      "unique": "Cet objet existe déjà"
     }
-  }
+  },
+
+  "question.unique": "Cette question existe déjà dans ce deck",
+  "titre.unique": "Ce deck existe déjà"
 }
