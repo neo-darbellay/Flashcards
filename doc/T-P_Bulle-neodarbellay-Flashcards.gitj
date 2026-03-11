@@ -137,6 +137,26 @@
       "duration": 4,
       "status": "Done",
       "author": "neo-darbellay"
+    },
+    {
+      "id": "b19f8e21-e52d-4cb0-afa3-23eb72599744",
+      "type": "commitless",
+      "name": "learn(Test): Informations sur le test",
+      "description": "",
+      "date": "2026-03-04T11:33:00.000Z",
+      "duration": 13,
+      "status": "Done",
+      "author": "neo-darbellay"
+    },
+    {
+      "id": "366f806d-b6e8-4963-9568-90243b406aef",
+      "type": "commitless",
+      "name": "chore(GitHub Projet): Début du GitHub Project",
+      "description": "Jusque là, j'ai oublié de le créer, mais avait des tâches faites en avance.",
+      "date": "2026-03-04T15:35:00.000Z",
+      "duration": 34,
+      "status": "WIP",
+      "author": "neo-darbellay"
     }
   ]
 }
